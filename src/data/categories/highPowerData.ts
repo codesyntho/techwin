@@ -57,7 +57,7 @@ export const highPowerData: CategoryData = {
     title: "High Power Single-Frequency Fiber Lasers",
     tagline:
       "High precision, high-power single-frequency fiber lasers engineered for industrial, scientific, and long-range sensing applications.",
-    image: "/techwin-company/category/Seed High-Power Fiber LasersLasers.jpg",
+    image: "/category/High-Power-Single-Frequency-Fiber-Lasers.jpg",
     imageAlt: "High-power single-frequency fiber laser module — Techwin",
     breadcrumb: [
       { label: "Home", href: "/" },

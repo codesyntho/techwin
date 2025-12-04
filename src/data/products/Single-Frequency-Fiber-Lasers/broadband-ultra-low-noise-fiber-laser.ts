@@ -3,6 +3,8 @@ import { Product } from "@/types/categories";
 export const broadbandUltraLowNoise: Product = {
   slug: "broadband-low-noise",
   category: "single-frequency-fiber-lasers",
+  tableCsvUrl: "https://docs.google.com/spreadsheets/d/1dray0_tpQpYOvnh-88lwq-Ejo1bUlKtECY9qyasZS4o/export?format=csv&gid=1678635405",
+
 
   meta: {
     title: "Broadband Fiber Laser Ultra-Low Noise | Techwin China Manufacturer",
@@ -19,6 +21,7 @@ export const broadbandUltraLowNoise: Product = {
   heroImage: { src: "/products/single-frequency/broadband-low-noise/hero.jpg",
     alt: "Broadband Ultra-Low Noise Fiber Laser",
   },
+  graphImageURL: "/products/single-frequency/broadband-low-noise/graph.jpg",
 
   galleryImages: [
       { src: "/single-frequency/broadband-low-noise/preview.jpg", alt: "Broadband ultra-low-noise fiber laser preview" },

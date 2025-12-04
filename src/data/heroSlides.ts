@@ -13,7 +13,7 @@ export const HERO_SLIDES: HeroSlide[] = [
     image: "/hero/laser-2.jpg",
     headline: "High-power & low-noise lasers for long-range LiDAR",
     sub: "Reliable, high-power sources with industry-leading stability.",
-    ctaSecondary: { type: "application", href: "/applications" },
+    ctaSecondary: { type: "application", href: "/application" },
   },
   {
     id: "s3",

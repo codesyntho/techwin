@@ -137,7 +137,7 @@ export default function RequestQuote({ productTitle, productSlug, onSubmit }: Re
                         whileTap={{ scale: 0.98 }}
                         className="w-full py-4 px-6 rounded-lg font-semibold text-white bg-[#3B9ACB] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-[#3B9ACB] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                       >
-                        {sending ? "Submitting..." : "Get My Personalized Quote"}
+                        {sending ? "Submitting..." : "Get Personalized Quote"}
                       </motion.button>
                     </form>
                   </motion.div>
@@ -153,10 +153,10 @@ export default function RequestQuote({ productTitle, productSlug, onSubmit }: Re
                 <li className="flex items-start gap-3"><CheckCircle className="text-[#3B9ACB] mt-1 shrink-0" /><span>Full access to datasheets and performance data.</span></li>
               </ul>
               
-              <div className="mt-auto pt-10">
-                <h5 className="font-semibold text-[#3B9ACB] mb-3">Or Contact Us Directly</h5>
-                <p className="text-gray-600 hover:text-[#3B9ACB] transition-colors"><a href="mailto:sales@techwin-laser.com">sales@techwin-laser.com</a></p>
-                <p className="text-gray-600">+86-139-5818-0450</p>
+              <div className="w-full mt-auto pt-10 bg-[#3B9ACB] p-4 rounded-lg">
+                <h5 className="font-bold text-white mb-3">Or Contact Us Directly</h5>
+                <p className="text-white/80 hover:text-white transition-colors"><a href="mailto:techwinchina@gmail.com"> techwinchina@gmail.com</a></p>
+                <p className="text-white/80 hover:text-white"><a href="tel:86-517-88284299">+86-517-88284299</a></p>
               </div>
             </div>
           </div>

@@ -53,7 +53,7 @@ export const singleFrequencyData: CategoryData = {
     title: "Single-Frequency Fiber Lasers",
     tagline:
       "Ultra-narrow linewidth, high stability fiber lasers for precision sensing, LiDAR, communications and quantum applications.",
-    image: "/techwin-company/category/single-frequency.jpg",
+    image: "/category/Single-Frequency-Fiber-Lasers.jpg",
     imageAlt: "Single-Frequency Fiber Lasers — Techwin",
     breadcrumb: [
       { label: "Home", href: "/" },

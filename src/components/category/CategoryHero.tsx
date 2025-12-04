@@ -242,7 +242,7 @@ export default function CategoryHero({
                   className="mt-6 flex flex-wrap items-center gap-3"
                 >
                   {renderCta(ctaPrimary, true)}
-                  {renderCta(ctaSecondary, false)}
+                  {/* {renderCta(ctaSecondary, false)} */}
                 </motion.div>
 
                 <motion.div

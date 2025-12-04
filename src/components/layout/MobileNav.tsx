@@ -27,15 +27,19 @@ const categoryTitleMap = [
   { title: "Point Light Sources", data: pointLightSourceData },
 ];
 
-const productCategories = categoryTitleMap.map((item) => ({
-  title: item.title,
-  slug: item.data.url.replace("/", ""),
-  image: item.data.hero.image,
-  children: item.data.subCategories.map((subCat) => ({
-    title: subCat.name,
-    slug: subCat.id ?? "",
-  })),
-}));
+const productCategories = categoryTitleMap.map((item) => {
+  const parts = String(item.data.url || "").split("/").filter(Boolean);
+  const slug = parts.length ? parts[parts.length - 1] : "";
+  return {
+    title: item.title,
+    slug,
+    image: item.data?.hero?.image || "",
+    children: (item.data?.subCategories || []).map((subCat) => ({
+      title: subCat.name,
+      slug: subCat.id ?? subCat.slug ?? "",
+    })),
+  };
+});
 
 type MobileNavProps = {
   onClose: () => void;
@@ -92,7 +96,7 @@ export default function MobileNav({ onClose }: MobileNavProps) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-white text-gray-900">
+    <div className="fixed inset-0 z-60 bg-white text-gray-900">
       <div className="flex justify-between items-center p-4 border-b">
         <h2 className="text-lg font-semibold">Menu</h2>
         <button onClick={onClose} aria-label="Close menu">

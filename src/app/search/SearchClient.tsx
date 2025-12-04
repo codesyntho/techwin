@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import type { SearchResult } from "@/app/api/search/route";
+import { applications } from "@/data/Application/applications";
 
 export default function SearchClient() {
   const searchParams = useSearchParams();
@@ -18,19 +19,99 @@ export default function SearchClient() {
       setIsLoading(false);
       return;
     }
-
     setIsLoading(true);
-    fetch(`/api/search?q=${encodeURIComponent(query)}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setResults(data.results || []);
-      })
-      .catch((error) => {
-        console.error("Search error:", error);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+    let cancelled = false;
+
+    (async () => {
+      const q = query.trim().toLowerCase();
+
+      try {
+        // 1) Static-first: try the prebuilt products JSON (works on pure static hosts)
+        const productsRes = await fetch(`/data/products.json`);
+        if (productsRes.ok) {
+          const productsJson = await productsRes.json();
+          const allProducts = productsJson.products || [];
+
+          const fallbackResults: SearchResult[] = [];
+
+          // Search applications (client-side data)
+          for (const app of applications) {
+            if (
+              app.name.toLowerCase().includes(q) ||
+              (app.heading && app.heading.toLowerCase().includes(q)) ||
+              (app.short && app.short.toLowerCase().includes(q)) ||
+              (app.keywords || []).some((k) => k.toLowerCase().includes(q))
+            ) {
+              fallbackResults.push({
+                type: "application",
+                title: app.name,
+                slug: app.slug,
+                description: app.short,
+                image: app.image,
+                url: `/application/${app.slug}`,
+              });
+            }
+          }
+
+          // Search product categories and products
+          for (const category of allProducts) {
+            const categoryTitle = category.categoryTitle || category.categorySlug || "";
+            if (String(categoryTitle).toLowerCase().includes(q)) {
+              fallbackResults.push({
+                type: "category",
+                title: categoryTitle,
+                slug: category.categorySlug,
+                url: `/products/${category.categorySlug}`,
+              });
+            }
+
+            for (const product of category.products || []) {
+              if (
+                (product.title && product.title.toLowerCase().includes(q)) ||
+                (product.slug && product.slug.toLowerCase().includes(q))
+              ) {
+                fallbackResults.push({
+                  type: "product",
+                  title: product.title,
+                  slug: product.slug,
+                  category: categoryTitle,
+                  url: `/products/${category.categorySlug}/${product.slug}`,
+                });
+              }
+            }
+          }
+
+          if (cancelled) return;
+
+          if (fallbackResults.length > 0) {
+            setResults(fallbackResults.slice(0, 10));
+            setIsLoading(false);
+            return;
+          }
+        }
+      } catch (err) {
+        // ignore static-read errors; we'll try server API next
+        console.warn("Static products.json lookup failed, will try API", err);
+      }
+
+      // 2) Try server API (useful when Next server or serverless endpoint is available)
+      try {
+        const res = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
+        const data = await res.json();
+        const apiResults: SearchResult[] = data.results || [];
+        if (cancelled) return;
+        setResults(apiResults.slice(0, 10));
+      } catch (error) {
+        console.error("Search API error:", error);
+        if (!cancelled) setResults([]);
+      } finally {
+        if (!cancelled) setIsLoading(false);
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
   }, [query]);
 
   const groupedResults = {

@@ -26,6 +26,21 @@ function findProductsDir() {
   return null;
 }
 
+function getCategoryImageFromDataFile(categoryDirName) {
+  // Map category directory names to their data file and image paths
+  const imageMap = {
+    'Broadband-ASE-Sources': '/category/Broadband-ASE-Sources.jpg',
+    'Fiber-Amplifiers': '/category/Fiber-Amplifier.jpg',
+    'High-Power-Fiber-Lasers': '/category/High-Power-Single-Frequency-Fiber-Lasers.jpg',
+    'point-light-sources': '/category/Point-Light-Source-Solutions.jpg',
+    'Seed-Lasers': '/category/High-Precision-Seed-Fiber-Lasers.jpg',
+    'Single-Frequency-Fiber-Lasers': '/category/Single-Frequency-Fiber-Lasers.jpg',
+    'Testing-Systems': '/category/Laser-Testing-and-Measurement-Systems.jpg',
+    'Wavelength-Conversion-Lasers': '/category/Wavelength-Conversion-Laser-Solutions-High-Precision-Performance.jpg',
+  };
+  return imageMap[categoryDirName] || '';
+}
+
 function readCategories() {
   const productsDir = findProductsDir();
   if (!productsDir) return [];
@@ -47,6 +62,7 @@ function readCategories() {
       return {
         categorySlug,
         categoryTitle: dir.name.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()),
+        categoryImage: getCategoryImageFromDataFile(dir.name),
         products: items,
       };
     });

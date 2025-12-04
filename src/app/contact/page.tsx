@@ -189,7 +189,7 @@ export default function ContactPage() {
                   <div>
                     <div className="font-medium">Contact</div>
                     {/* <div>Franks Chow — Mobile: <a href="tel:+8613958180450" className="underline">+86-13958180450</a></div> */}
-                    <div>Tel: <a href="tel:+8651788284299" className="underline">+86-571-88284299</a></div>
+                    <div>Tel: <a href="tel:+8657188284299" className="underline">+86-57188284299</a></div>
                   </div>
                 </li>
 
@@ -201,7 +201,7 @@ export default function ContactPage() {
                       <a href="mailto:techwinchina@gmail.com" className="underline">techwinchina@gmail.com</a>,{" "}
                       <a href="mailto:sales@techwin-china.com" className="underline">sales@techwin-china.com</a>
                     </div>
-                    <div className="text-xs text-slate-600">WhatsApp / WeChat: +86-13958180450</div>
+                    <div className="text-xs text-slate-600">WeChat: +86-57188284299</div>
                   </div>
                 </li>
 

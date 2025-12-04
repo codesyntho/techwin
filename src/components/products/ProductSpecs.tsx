@@ -10,7 +10,7 @@ import {
   Maximize,
   Minimize,
   HelpCircle,
-  Download,
+  PhoneCall,
   ChevronRight,
 } from "lucide-react";
 
@@ -60,7 +60,7 @@ const itemVariants: Variants = {
 export default function ProductSpecs({
   specs = {},
   ctaLabel = "Request Quote",
-  datasheetUrl,
+  datasheetUrl = "/contact",
 }: ProductSpecsProps) {
   const entries = Object.entries(specs);
 
@@ -144,14 +144,14 @@ export default function ProductSpecs({
         <div className="flex flex-col sm:flex-row gap-3">
           {datasheetUrl && (
             <a
-              href={datasheetUrl}
-              target="_blank"
+              href="/contact"
+              target="/contact"
               rel="noopener noreferrer"
               className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-semibold text-sm text-white transition-all"
               style={{ backgroundColor: PRIMARY }}
             >
-              <Download size={16} />
-              Download Datasheet
+              <PhoneCall size={16} />
+              Contact Us
             </a>
           )}
           <a

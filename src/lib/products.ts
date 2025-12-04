@@ -429,6 +429,11 @@ export async function getProductData(category: string, productSlug: string) {
         datasheetImageSrc: raw.datasheetImageSrc || raw.datasheetUrl || (Array.isArray(raw.datasheets) && raw.datasheets[0] && (raw.datasheets[0].image || raw.datasheets[0].url)) || "",
         sections: normalizedSections,
         relatedProducts: raw.relatedProducts || [],
+        // Pass-through fields useful for the UI that may appear in product files
+        tableCsvUrl: raw.tableCsvUrl || raw.tableCSVUrl || raw.tableCsv || undefined,
+        tableData: raw.tableData || undefined,
+        tableImageUrl: raw.tableImageUrl || undefined,
+        graphImageURL: raw.graphImageURL || raw.graphImageUrl || raw.graphImage || undefined,
       };
 
       if (process.env.NODE_ENV !== "production") {
@@ -521,6 +526,11 @@ export async function getProductData(category: string, productSlug: string) {
               sections: Array.isArray(raw.sections) ? raw.sections : [],
               heroImage: raw.heroImage || (raw.images && raw.images[0]) || { src: "", alt: "" },
               datasheetUrl: raw.datasheetUrl || "",
+              // lightweight passthroughs from simpler fallback product files
+              tableCsvUrl: raw.tableCsvUrl || raw.tableCSVUrl || raw.tableCsv || undefined,
+              tableData: raw.tableData || undefined,
+              tableImageUrl: raw.tableImageUrl || undefined,
+              graphImageURL: raw.graphImageURL || raw.graphImageUrl || raw.graphImage || undefined,
             };
             return product;
           }

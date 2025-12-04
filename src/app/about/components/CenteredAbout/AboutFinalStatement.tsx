@@ -38,7 +38,7 @@ export default function AboutFinalStatement() {
 
             <p className="text-base text-slate-700 leading-relaxed max-w-[70%] mx-auto">
               For more information or to request a quote, contact us at 
-              <span className="font-semibold text-[#3087C0]"> +86-13958180450 </span>
+              <span className="font-semibold text-[#3087C0]"><a href="tel:+8657188284299">+86-57188284299</a> </span>
               or visit our facility in Hangzhou City.
             </p>
           </div>

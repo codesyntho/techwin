@@ -14,15 +14,16 @@ export const oneMicronSingleFrequencyFiberLaser: Product = {
 
   title: "1.0 µm Single-Frequency Fiber Laser",
   shortDescription:
-    "The 1.0 µm Single-Frequency Fiber Laser provides narrow linewidth, stable output, and long-term reliability for scientific, industrial, sensing and metrology applications.",
+    "The 1.0 μm ultra-narrow linewidth fiber laser is a laser with completely independent intellectual property rights and internationally advanced performance. It employs a special resonant cavity structure design, combined with noise suppression and linewidth narrowing technology, to achieve ultra-narrow linewidth laser output down to the kHz level. Product features: ultra-narrow linewidth; no mode hopping, no burst noise; high side-mode suppression ratio; low relative intensity noise  good vibration resistance and high/low temperature performance. Applications: gravitational wave detection; fiber optic sensing; underwater hydrophones; lidar; coherent communication; quantum precision measurement.",
 
   heroImage: { src: "/products/single-frequency/1um/hero.jpg",
     alt: "1.0 µm Single-Frequency Fiber Laser",
   },
+  
 
   galleryImages: [
-      { src: "/products/single-frequency/1um/preview.jpg", alt: "1.0µm single-frequency fiber laser preview" },
-      { src: "/products/single-frequency/1um/hero.jpg", alt: "1.0µm single-frequency fiber laser hero" },
+      { src: "/products/single-frequency/1um/hero1.jpg", alt: "1.0µm single-frequency fiber laser preview" },
+      { src: "/products/single-frequency/1um/hero1.jpg", alt: "1.0µm single-frequency fiber laser hero" },
     ],
 
   datasheetUrl: "/products/single-frequency/1um/datasheet.jpg",

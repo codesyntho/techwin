@@ -11,6 +11,9 @@ export interface ICloudinaryImage {
 export interface IProductSection {
   type: string;
   content: any;
+  // optional helpful fields for chart/table assets that some products provide
+  tableCsvUrl?: string;
+  graphImageURL?: string;
 }
 
 export interface BackendProduct {
@@ -26,6 +29,9 @@ export interface BackendProduct {
   featured?: boolean;
   createdAt: string;
   updatedAt: string;
+  // product-level assets (optional)
+  tableCsvUrl?: string;
+  graphImageURL?: string;
 }
 
 
@@ -125,6 +131,10 @@ export interface ProductSection {
     headers: string[];
     rows: (string | { text: string; highlight?: boolean })[][];
   };
+
+  // optional chart/table assets for this section
+  tableCsvUrl?: string;
+  graphImageURL?: string;
 }
 
 export interface FrontendProduct {
@@ -148,6 +158,13 @@ export interface FrontendProduct {
 
   // datasheet file URL (PDF, etc.)
   datasheetUrl?: string;
+
+  tableData?: {
+    headers: string[];
+    rows: string[][];
+    title?: string;
+    caption?: string;
+  };
   
   // datasheet preview image (980 × 320) - separate from datasheetUrl
   datasheetImageSrc?: string | ProductImage;
@@ -160,6 +177,10 @@ export interface FrontendProduct {
     image: ProductImage;
     href: string;
   }[];
+
+  // optional product-level assets
+  tableCsvUrl?: string;
+  graphImageURL?: string;
 }
 
 // Alias for clarity

@@ -235,9 +235,9 @@ export default function KeyFeatures({
                         <h3 className="text-lg md:text-xl font-semibold tracking-[-0.01em] text-slate-900">
                           {active.title || getLabel(active, 0)}
                         </h3>
-                        <p className="mt-2 text-sm md:text-base text-slate-600 max-w-2xl">
+                        {/* <p className="mt-2 text-sm md:text-base text-slate-600 max-w-2xl">
                           {active.text}
-                        </p>
+                        </p> */}
                       </div>
                     </div>
 
@@ -252,7 +252,7 @@ export default function KeyFeatures({
                       <h4 className="text-xs font-semibold tracking-[0.16em] uppercase text-slate-500 mb-2">
                         Technical context
                       </h4>
-                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      <p className="text-sm sm:text-sm text-slate-600 leading-relaxed">
                         {active.details}
                       </p>
                     </div>
@@ -260,14 +260,8 @@ export default function KeyFeatures({
                 </div>
 
                 <div className="mt-5 pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3 text-[11px] text-slate-500">
-                  <span>
-                    Switch tabs to review noise, linewidth, stability or system
-                    integration characteristics.
-                  </span>
-                  <span className="inline-flex items-center gap-1">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                    <span>Optimized for continuous operation</span>
-                  </span>
+
+
                 </div>
               </motion.div>
             </div>

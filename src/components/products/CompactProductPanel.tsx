@@ -65,7 +65,10 @@ export default function FeatureAndApplicationsPanel({
   const features = useMemo(() => {
     const f: string[] = [];
     (product.sections || []).forEach((s) => {
-      if ((s.type || "").toLowerCase() === "features" && Array.isArray(s.bullets)) {
+      if (
+        (s.type || "").toLowerCase() === "features" &&
+        Array.isArray(s.bullets)
+      ) {
         f.push(...(s.bullets || []));
       }
     });
@@ -90,16 +93,31 @@ export default function FeatureAndApplicationsPanel({
       ) || null;
 
     if (appSection && appSection.content) {
-      const parts = appSection.content.split(/\.\s+/).map((p) => p.trim()).filter(Boolean);
+      const parts = appSection.content
+        .split(/\.\s+/)
+        .map((p) => p.trim())
+        .filter(Boolean);
       // filter out parts that are same/as-long-as shortDescription
-      const distinct = parts.filter((p) => !similar(p, product.shortDescription));
+      const distinct = parts.filter(
+        (p) => !similar(p, product.shortDescription)
+      );
       distinct.slice(0, 4).forEach((p) => apps.push(p.endsWith(".") ? p : p));
     }
 
     // 2) if not enough, try to extract keywords from shortDescription (OCT, sensing, metrology...)
     if (apps.length < 2 && product.shortDescription) {
       const sd = product.shortDescription;
-      const keywords = ["OCT", "oct", "sensing", "metrology", "fiber", "imaging", "quantum", "scientific", "industrial"];
+      const keywords = [
+        "OCT",
+        "oct",
+        "sensing",
+        "metrology",
+        "fiber",
+        "imaging",
+        "quantum",
+        "scientific",
+        "industrial",
+      ];
       const found: string[] = [];
       for (const kw of keywords) {
         const re = new RegExp(`\\b${kw}\\b`, "i");
@@ -125,8 +143,14 @@ export default function FeatureAndApplicationsPanel({
         return s.length > 90 ? s.slice(0, 90).trim() + "…" : s;
       });
       fromFeatures.forEach((f) => {
-        const candidate = `Used for ${f.charAt(0).toLowerCase() === " " ? f.slice(1) : f}`;
-        if (!apps.includes(candidate) && !similar(candidate, product.shortDescription)) apps.push(candidate);
+        const candidate = `Used for ${
+          f.charAt(0).toLowerCase() === " " ? f.slice(1) : f
+        }`;
+        if (
+          !apps.includes(candidate) &&
+          !similar(candidate, product.shortDescription)
+        )
+          apps.push(candidate);
       });
     }
 
@@ -143,7 +167,10 @@ export default function FeatureAndApplicationsPanel({
     return uniq;
   }, [product.sections, product.shortDescription, features]);
 
-  const chips = useMemo(() => Object.entries(specSummary || {}).slice(0, 4), [specSummary]);
+  const chips = useMemo(
+    () => Object.entries(specSummary || {}).slice(0, 4),
+    [specSummary]
+  );
 
   return (
     <section className="w-full bg-[#3B9ACB] py-12">
@@ -158,18 +185,20 @@ export default function FeatureAndApplicationsPanel({
                   {product.title}
                 </h1>
                 {product.shortDescription && (
-                  <p className="mt-3 text-md text-black max-w-3xl pb-8">{product.shortDescription}</p>
+                  <p className="mt-3 text-md text-black max-w-3xl pb-8">
+                    {product.shortDescription}
+                  </p>
                 )}
-
                 {chips.length > 0 && (
                   <div className="mt-4 flex flex-wrap gap-2">
                     {chips.map(([k, v]) => (
                       <span
                         key={k}
-                        className="text-xs bg-[#3B9ACB]/10 text-black/80 px-3 py-1 rounded-full backdrop-blur-sm border border-white/10"
+                        className="text-sm bg-[#3B9ACB]/10 text-black/80 px-3 py-1 rounded-full 
+                   backdrop-blur-sm border border-white/10 flex items-center gap-1"
                         title={`${k}: ${v}`}
                       >
-                        <strong className="mr-1">{k}:</strong>
+                        <strong>{k}:</strong>
                         <span className="opacity-95">{v}</span>
                       </span>
                     ))}
@@ -187,7 +216,9 @@ export default function FeatureAndApplicationsPanel({
               <div className="lg:col-span-7">
                 <div className="border border-gray-100 rounded-xl p-6 shadow-sm">
                   <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-lg font-semibold text-slate-900">Key features</h2>
+                    <h2 className="text-lg font-semibold text-slate-900">
+                      Key features
+                    </h2>
                     <span className="text-xs text-slate-500">Highlights</span>
                   </div>
 
@@ -203,11 +234,15 @@ export default function FeatureAndApplicationsPanel({
                               ✓
                             </span>
                           </div>
-                          <div className="text-sm text-slate-800 leading-snug">{f}</div>
+                          <div className="text-sm text-slate-800 leading-snug">
+                            {f}
+                          </div>
                         </li>
                       ))
                     ) : (
-                      <li className="text-sm text-slate-600">No feature data available.</li>
+                      <li className="text-sm text-slate-600">
+                        No feature data available.
+                      </li>
                     )}
                   </ul>
                 </div>
@@ -216,7 +251,9 @@ export default function FeatureAndApplicationsPanel({
               <div className="lg:col-span-5">
                 <div className="rounded-xl p-6 bg-gradient-to-b from-white to-slate-50 border border-gray-100 shadow-sm">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-semibold text-slate-900">Applications</h3>
+                    <h3 className="text-lg font-semibold text-slate-900">
+                      Applications
+                    </h3>
                     <span className="text-xs text-slate-500">Use cases</span>
                   </div>
 
@@ -227,37 +264,43 @@ export default function FeatureAndApplicationsPanel({
                           key={i}
                           className="p-3 rounded-md border border-slate-100 bg-white/80 hover:shadow-sm transition"
                         >
-                          <div className="text-sm text-slate-800 leading-snug">{a}</div>
+                          <div className="text-sm text-slate-800 leading-snug">
+                            {a}
+                          </div>
                         </div>
                       ))
                     ) : (
-                      <div className="text-sm text-slate-600">No applications listed.</div>
+                      <div className="text-sm text-slate-600">
+                        No applications listed.
+                      </div>
                     )}
                   </div>
 
                   <div className="h-px my-5 bg-slate-100" />
 
-                  {product.relatedProducts && product.relatedProducts.length > 0 && (
-                    <>
-                      <div className="text-xs text-slate-500 mb-2">Related</div>
-                      <div className="flex flex-wrap gap-2">
-                        {product.relatedProducts.slice(0, 3).map((r, idx) => (
-                          <Link
-                            key={idx}
-                            href={r.href || "#"}
-                            className="text-xs px-3 py-1 rounded-full bg-[#eef8fb] text-[#0b4860] hover:bg-[#def0f6] transition"
-                          >
-                            {r.title}
-                          </Link>
-                        ))}
-                      </div>
-                    </>
-                  )}
+                  {product.relatedProducts &&
+                    product.relatedProducts.length > 0 && (
+                      <>
+                        <div className="text-xs text-slate-500 mb-2">
+                          Related
+                        </div>
+                        <div className="flex flex-wrap gap-2">
+                          {product.relatedProducts.slice(0, 3).map((r, idx) => (
+                            <Link
+                              key={idx}
+                              href={r.href || "#"}
+                              className="text-xs px-3 py-1 rounded-full bg-[#eef8fb] text-[#0b4860] hover:bg-[#def0f6] transition"
+                            >
+                              {r.title}
+                            </Link>
+                          ))}
+                        </div>
+                      </>
+                    )}
                 </div>
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>

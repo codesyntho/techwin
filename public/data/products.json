@@ -3,6 +3,7 @@
     {
       "categorySlug": "broadband-ase-sources",
       "categoryTitle": "Broadband ASE Sources",
+      "categoryImage": "/category/Broadband-ASE-Sources.jpg",
       "products": [
         {
           "slug": "ase-light-source-1-5um",
@@ -29,6 +30,7 @@
     {
       "categorySlug": "fiber-amplifiers",
       "categoryTitle": "Fiber Amplifiers",
+      "categoryImage": "/category/Fiber-Amplifier.jpg",
       "products": [
         {
           "slug": "erbium-doped-fiber-amplifier",
@@ -47,6 +49,7 @@
     {
       "categorySlug": "high-power-fiber-lasers",
       "categoryTitle": "High Power Fiber Lasers",
+      "categoryImage": "/category/High-Power-Single-Frequency-Fiber-Lasers.jpg",
       "products": [
         {
           "slug": "high-power-cw-single-frequency-fiber-laser-1-5um",
@@ -73,6 +76,7 @@
     {
       "categorySlug": "seed-lasers",
       "categoryTitle": "Seed Lasers",
+      "categoryImage": "/category/High-Precision-Seed-Fiber-Lasers.jpg",
       "products": [
         {
           "slug": "1-0um-frequency-stabilized-seed-laser",
@@ -107,6 +111,7 @@
     {
       "categorySlug": "single-frequency-fiber-lasers",
       "categoryTitle": "Single Frequency Fiber Lasers",
+      "categoryImage": "/category/Single-Frequency-Fiber-Lasers.jpg",
       "products": [
         {
           "slug": "1-0um-single-frequency-fiber-laser",
@@ -145,6 +150,7 @@
     {
       "categorySlug": "testing-systems",
       "categoryTitle": "Testing Systems",
+      "categoryImage": "/category/Laser-Testing-and-Measurement-Systems.jpg",
       "products": [
         {
           "slug": "noise-testing-system",
@@ -159,6 +165,7 @@
     {
       "categorySlug": "wavelength-conversion-lasers",
       "categoryTitle": "Wavelength Conversion Lasers",
+      "categoryImage": "/category/Wavelength-Conversion-Laser-Solutions-High-Precision-Performance.jpg",
       "products": [
         {
           "slug": "193nm-wavelength-conversion-laser",
@@ -189,6 +196,7 @@
     {
       "categorySlug": "point-light-sources",
       "categoryTitle": "Point Light Sources",
+      "categoryImage": "/category/Point-Light-Source-Solutions.jpg",
       "products": [
         {
           "slug": "point-light-source-1-5um",

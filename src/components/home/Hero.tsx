@@ -9,7 +9,7 @@ import RequestQuoteModal from "@/components/quote/RequestQuoteModal";
 
 export type HeroSlide = {
     id: string;
-    image: string; // path in /public, must start with "/"
+    image: string; 
     headline: string;
     sub: string;
     ctaPrimary?: { label: string; href: string };
@@ -19,7 +19,7 @@ export type HeroSlide = {
 type Props = {
     slides: HeroSlide[];
     autoplay?: boolean;
-    autoplayInterval?: number; // ms
+    autoplayInterval?: number; 
 };
 
 export default function Hero({ slides, autoplay = true, autoplayInterval = 6000 }: Props) {

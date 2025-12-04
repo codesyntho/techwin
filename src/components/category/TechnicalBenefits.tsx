@@ -91,7 +91,7 @@ export default function TechnicalBenefits({ items, columns = 3, compact = false 
         className="relative py-16 md:py-20 bg-white text-black overflow-hidden"
         aria-label="Technical advantages"
       >
-        {/* background grid + primary glows */}
+        {/* decorative backgrounds */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 -z-10 opacity-[0.35]"
@@ -101,14 +101,8 @@ export default function TechnicalBenefits({ items, columns = 3, compact = false 
             backgroundSize: "52px 52px",
           }}
         />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -top-40 right-[-10%] w-[520px] h-[520px] rounded-full bg-[#3B9ACB1F] blur-3xl -z-10"
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -bottom-40 left-[-10%] w-[520px] h-[520px] rounded-full bg-[#3B9ACB14] blur-3xl -z-10"
-        />
+        <div aria-hidden className="pointer-events-none absolute -top-40 right-[-10%] w-[520px] h-[520px] rounded-full bg-[#3B9ACB1F] blur-3xl -z-10" />
+        <div aria-hidden className="pointer-events-none absolute -bottom-40 left-[-10%] w-[520px] h-[520px] rounded-full bg-[#3B9ACB14] blur-3xl -z-10" />
 
         <div className={CONTAINER}>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
@@ -156,7 +150,7 @@ export default function TechnicalBenefits({ items, columns = 3, compact = false 
                       setCompareIds([]);
                       setOpenId(null);
                     }}
-                    className="rounded-full px-4 py-2 border border-[#3B9ACB33] text-xs md:text-sm text-black bg-white hover:bg-[#3B9ACB0D] hover:shadow-sm transition"
+                    className="rounded-full px-4 py-2 border border-[#3B9ACB33] text-xs md:text-sm text-black bg-white hover:bg-[#3B9ACB0D] hover:shadow-sm transition cursor-pointer"
                   >
                     Clear selection
                   </button>
@@ -164,21 +158,21 @@ export default function TechnicalBenefits({ items, columns = 3, compact = false 
                   <button
                     onClick={() => setCompareModalOpen(true)}
                     aria-disabled={compareIds.length < 2}
-                    className={`rounded-full px-4 py-2 text-xs md:text-sm font-semibold inline-flex items-center gap-2 transition ${
+                    className={`rounded-full px-4 py-2 text-xs md:text-sm font-semibold inline-flex items-center gap-2 transition cursor-pointer ${
                       compareIds.length >= 2
                         ? "bg-[#3B9ACB] text-white shadow hover:brightness-110"
                         : "bg-white text-black/40 border border-[#3B9ACB33] cursor-not-allowed"
                     }`}
                   >
                     <span>Open compare</span>
-                    <span className="inline-flex h-5 min-w-[1.8rem] items-center justify-center rounded-full bg-white text-[11px] text-[#3B9ACB]">
+                    <span className="inline-flex h-5 min-w-[1.8rem] items-center justify-center rounded-full bg-white text-[11px] text-[#3B9ACB] ">
                       {compareIds.length}
                     </span>
                   </button>
 
-                  <span className="text-[11px] text-black/55">
+                  {/* <span className="text-[11px] text-black/55">
                     Select at least <span className="font-semibold">2</span> benefits to unlock compare.
-                  </span>
+                  </span> */}
                 </div>
               </div>
             </motion.div>
@@ -233,19 +227,19 @@ export default function TechnicalBenefits({ items, columns = 3, compact = false 
                   ))}
                 </motion.div>
 
-                <div className="relative z-10 mt-5">
+                {/* <div className="relative z-10 mt-5">
                   <div className="inline-flex items-center gap-2 rounded-full bg-[#3B9ACB0F] border border-[#3B9ACB33] px-3 py-1.5 text-[11px] text-black/70">
                     <span className="h-1.5 w-1.5 rounded-full bg-[#3B9ACB]" />
                     <span>Hint: click a card to select it. Tap the (i) icon for more info.</span>
                   </div>
-                </div>
+                </div> */}
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* STICKY COMPARE BAR – white chip with blue accent */}
+      {/* STICKY COMPARE BAR */}
       <AnimatePresence>
         {compareIds.length > 0 && (
           <motion.div
@@ -316,7 +310,7 @@ export default function TechnicalBenefits({ items, columns = 3, compact = false 
   );
 }
 
-/* CARD: white, 3D, primary accent */
+/* CARD */
 function BlueCard({
   item,
   index,
@@ -389,14 +383,8 @@ function BlueCard({
             <div>
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <h3 className="text-sm md:text-base font-semibold text-black leading-snug">
-                    {item.title}
-                  </h3>
-                  {item.subtitle && (
-                    <div className="mt-1 text-[11px] md:text-xs text-black/70">
-                      {item.subtitle}
-                    </div>
-                  )}
+                  <h3 className="text-sm md:text-base font-semibold text-black leading-snug">{item.title}</h3>
+                  {item.subtitle && <div className="mt-1 text-[11px] md:text-xs text-black/70">{item.subtitle}</div>}
                 </div>
 
                 <button
@@ -412,22 +400,14 @@ function BlueCard({
                 </button>
               </div>
 
-              {item.desc && (
-                <p className="mt-3 text-xs md:text-sm text-black/75 leading-relaxed">
-                  {item.desc}
-                </p>
-              )}
-            </div>
-            
-            <div className="mt-4 flex items-center justify-end">
-              <div className="inline-flex items-center gap-1 text-[10px] text-black/55">
-                 {compareSelected ? 
-                  <span className="font-semibold text-[#3B9ACB]">Selected for compare</span> 
-                  : <span>Click card to select</span>
-                }
-              </div>
+              {item.desc && <p className="mt-3 text-xs md:text-sm text-black/75 leading-relaxed">{item.desc}</p>}
             </div>
 
+            <div className="mt-4 flex items-center justify-end">
+              <div className="inline-flex items-center gap-1 text-[10px] text-black/55">
+                {compareSelected ? <span className="font-semibold text-[#3B9ACB]">Selected for compare</span> : <span>Click card to select</span>}
+              </div>
+            </div>
           </div>
         </div>
 
@@ -440,19 +420,12 @@ function BlueCard({
               transition={{ duration: 0.3, ease: [0.22, 0.9, 0.3, 1] }}
               className="pt-3 border-t border-[#3B9ACB26]"
             >
-              {item.details && (
-                <p className="text-[11px] md:text-xs text-black/75 leading-relaxed">
-                  {item.details}
-                </p>
-              )}
+              {item.details && <p className="text-[11px] md:text-xs text-black/75 leading-relaxed">{item.details}</p>}
 
               {item.meta && item.meta.length > 0 && (
                 <ul className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {item.meta.map((m, i) => (
-                    <li
-                      key={i}
-                      className="text-[10px] text-black px-2 py-1 rounded-md bg-[#3B9ACB0D] border border-[#3B9ACB26]"
-                    >
+                    <li key={i} className="text-[10px] text-black px-2 py-1 rounded-md bg-[#3B9ACB0D] border border-[#3B9ACB26]">
                       {m}
                     </li>
                   ))}
@@ -475,13 +448,16 @@ function BlueCard({
 }
 
 /* Circular metric for white cards */
-function CircularMetricForBlue({ value = 0, label, selected }: { value?: number; label?: string, selected?: boolean }) {
-  const pct = Math.max(0, Math.min(100, value));
+/* Improvement: if value is 0, show subtle dash (—) instead of large 0 which looks odd */
+function CircularMetricForBlue({ value = 0, label, selected }: { value?: number; label?: string; selected?: boolean }) {
+  const pct = Math.max(0, Math.min(100, Math.round(value)));
   const stroke = 5;
   const size = 52;
   const radius = (size - stroke) / 2;
   const circumference = 2 * Math.PI * radius;
   const offset = circumference - (pct / 100) * circumference;
+
+  const small = pct === 0;
 
   return (
     <div className="w-14 h-14 flex flex-col items-center justify-center relative">
@@ -492,34 +468,41 @@ function CircularMetricForBlue({ value = 0, label, selected }: { value?: number;
             <stop offset="100%" stopColor="#55D6F5" />
           </linearGradient>
         </defs>
-        <circle cx={size / 2} cy={size / 2} r={radius} stroke="rgba(59,154,203,0.15)" strokeWidth={stroke} fill="none" />
-        <motion.circle
-          cx={size / 2}
-          cy={size / 2}
-          r={radius}
-          stroke="url(#metric-grad)"
-          strokeWidth={stroke}
-          fill="none"
-          strokeDasharray={circumference}
-          strokeDashoffset={offset}
-          strokeLinecap="round"
-          transform={`rotate(-90 ${size / 2} ${size / 2})`}
-          initial={{ strokeDashoffset: circumference }}
-          animate={{ strokeDashoffset: offset }}
-          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-        />
+        <circle cx={size / 2} cy={size / 2} r={radius} stroke="rgba(59,154,203,0.12)" strokeWidth={stroke} fill="none" />
+        {!small && (
+          <motion.circle
+            cx={size / 2}
+            cy={size / 2}
+            r={radius}
+            stroke="url(#metric-grad)"
+            strokeWidth={stroke}
+            fill="none"
+            strokeDasharray={circumference}
+            strokeDashoffset={offset}
+            strokeLinecap="round"
+            transform={`rotate(-90 ${size / 2} ${size / 2})`}
+            initial={{ strokeDashoffset: circumference }}
+            animate={{ strokeDashoffset: offset }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+          />
+        )}
       </svg>
-      <div 
-        className={`w-full h-full rounded-full flex flex-col items-center justify-center transition-colors ${selected ? 'bg-blue-100/50' : 'bg-transparent'}`}>
-        <span className="text-lg font-bold text-[#3B9ACB]">{pct}</span>
+
+      <div className={`w-full h-full rounded-full flex flex-col items-center justify-center transition-colors ${selected ? "bg-blue-100/50" : "bg-transparent"}`}>
+        {small ? (
+          // subtle dash for zero (less aggressive than "0")
+          <span className="text-lg font-semibold text-[#3B9ACB]">—</span>
+        ) : (
+          <span className="text-lg font-bold text-[#3B9ACB]">{pct}</span>
+        )}
       </div>
-       {label && <div className="text-[9px] text-black/70 mt-1.5 text-center leading-tight">{label}</div>}
+
+      {label && <div className="text-[9px] text-black/70 mt-1.5 text-center leading-tight">{label}</div>}
     </div>
   );
 }
 
-
-/* MODAL: white/primary, with sparkles background */
+/* COMPARE MODAL: improved layout and overlap-fade behaviour */
 function CompareModal({
   selected,
   onClose,
@@ -531,13 +514,17 @@ function CompareModal({
 }) {
   const left = selected[0];
   const right = selected[1];
-  
-  const x = useMotionValue(50);
+
+  const x = useMotionValue(50); // percent (0..100) - 50 center
   const xSpring = useSpring(x, { stiffness: 300, damping: 40 });
 
   const containerRef = useRef<HTMLDivElement | null>(null);
   const dragging = useRef(false);
-  
+
+  // Compute left/right opacity based on slider position to avoid visual double-text
+  const leftOpacity = useTransform(xSpring, [0, 30, 50, 70, 100], [1, 0.7, 0.55, 0.3, 0.1]);
+  const rightOpacity = useTransform(xSpring, [0, 30, 50, 70, 100], [0.1, 0.3, 0.55, 0.7, 1]);
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -552,7 +539,7 @@ function CompareModal({
 
   const handlePointerDown = (e: React.PointerEvent) => {
     dragging.current = true;
-    (e.target as HTMLElement).setPointerCapture(e.pointerId);
+    (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
   };
 
   const handlePointerMove = (e: React.PointerEvent) => {
@@ -564,7 +551,7 @@ function CompareModal({
 
   const handlePointerUp = (e: React.PointerEvent) => {
     dragging.current = false;
-    (e.target as HTMLElement).releasePointerCapture(e.pointerId);
+    (e.target as HTMLElement).releasePointerCapture?.(e.pointerId);
     const currentX = x.get();
     const snapPoints = [25, 50, 75];
     const snap = snapPoints.reduce((a, b) => (Math.abs(currentX - a) < Math.abs(currentX - b) ? a : b));
@@ -599,22 +586,14 @@ function CompareModal({
                 – {left.title} <span className="text-black/50">vs</span> {right.title}
               </span>
             </h3>
-            <p className="mt-1 text-[11px] text-black/55">
-              Drag the handle or use arrow keys. Press Esc to close.
-            </p>
+            <p className="mt-1 text-[11px] text-black/55">Drag the handle or use arrow keys. Press Esc to close.</p>
           </div>
 
           <div className="flex items-center gap-2">
-            <button
-              onClick={onClose}
-              className="rounded-full px-3 py-1.5 border border-[#3B9ACB33] bg-white text-xs text-black hover:bg-[#3B9ACB0D]"
-            >
+            <button onClick={onClose} className="rounded-full px-3 py-1.5 border border-[#3B9ACB33] bg-white text-xs text-black hover:bg-[#3B9ACB0D]">
               Close
             </button>
-            <button
-              onClick={() => onRequestQuote?.()}
-              className="rounded-full px-4 py-1.5 bg-[#3B9ACB] text-xs md:text-sm font-semibold text-white hover:brightness-110"
-            >
+            <button onClick={() => onRequestQuote?.()} className="rounded-full px-4 py-1.5 bg-[#3B9ACB] text-xs md:text-sm font-semibold text-white hover:brightness-110">
               Request quote
             </button>
           </div>
@@ -622,43 +601,41 @@ function CompareModal({
 
         {/* body */}
         <div className="relative h-[460px] md:h-[520px]" ref={containerRef}>
-          {/* Backgrounds and Sparkles */}
+          {/* Background sparkles */}
           <div className="absolute inset-0 -z-10">
-            <SparklesCore
-              className="w-full h-full"
-              background="transparent"
-              particleColor="#3B9ACB"
-              particleDensity={12}
-              minSize={0.25}
-              maxSize={0.8}
-            />
+            <SparklesCore className="w-full h-full" background="transparent" particleColor="#3B9ACB" particleDensity={12} minSize={0.25} maxSize={0.8} />
           </div>
-           <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-[#3B9ACB04]" />
+          <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-[#3B9ACB04]" />
 
-
-          {/* Right Panel (Static) */}
-          <div className="absolute inset-0 flex justify-end items-center">
-             <div className="w-full h-full px-8 md:px-12 lg:px-16 py-10 flex flex-col justify-center items-end text-right">
+          {/* RIGHT Panel (always visible behind clipped left) */}
+          <div className="absolute inset-0 flex justify-end items-center pointer-events-none">
+            <div className="w-full h-full px-8 md:px-12 lg:px-16 py-10 flex flex-col justify-center items-end text-right">
+              {/* wrap in motion.div to apply opacity transform */}
+              <motion.div style={{ opacity: rightOpacity as any, maxWidth: "56ch" }} className="transform-gpu">
                 <h4 className="text-xl md:text-2xl font-semibold text-black">{right.title}</h4>
                 {right.subtitle && <p className="mt-2 text-base text-black/70 max-w-xl">{right.subtitle}</p>}
                 {right.desc && <p className="mt-4 text-base text-black/75 max-w-xl leading-relaxed">{right.desc}</p>}
-             </div>
+              </motion.div>
+            </div>
           </div>
-          
-          {/* Left Panel (Clipped) */}
+
+          {/* Left Panel (clipped by slider) */}
           <motion.div
-            className="absolute inset-0 flex justify-start items-center overflow-hidden"
-            style={{ clipPath: useTransform(xSpring, v => `inset(0 ${100 - v}% 0 0)`)}}
+            className="absolute inset-0 flex justify-start items-center overflow-hidden pointer-events-none"
+            // clipPath driven by spring - left area visible
+            style={{ clipPath: useTransform(xSpring, (v) => `inset(0 ${100 - v}% 0 0)`) as any }}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-[#3B9ACB08] via-white to-white" />
-            <div className="w-full h-full px-8 md:px-12 lg:px-16 py-10 flex flex-col justify-center">
-              <h4 className="text-xl md:text-2xl font-semibold text-black">{left.title}</h4>
-              {left.subtitle && <p className="mt-2 text-base text-black/70 max-w-xl">{left.subtitle}</p>}
-              {left.desc && <p className="mt-4 text-base text-black/75 max-w-xl leading-relaxed">{left.desc}</p>}
+            <div className="w-full h-full px-8 md:px-12 lg:px-16 py-10 flex flex-col justify-center pointer-events-none">
+              <motion.div style={{ opacity: leftOpacity as any, maxWidth: "56ch" }}>
+                <h4 className="text-xl md:text-2xl font-semibold text-black">{left.title}</h4>
+                {left.subtitle && <p className="mt-2 text-base text-black/70 max-w-xl">{left.subtitle}</p>}
+                {left.desc && <p className="mt-4 text-base text-black/75 max-w-xl leading-relaxed">{left.desc}</p>}
+              </motion.div>
             </div>
           </motion.div>
 
-          {/* slider handle */}
+          {/* center handle */}
           <motion.div
             role="slider"
             aria-valuemin={0}
@@ -669,17 +646,13 @@ function CompareModal({
             onPointerMove={handlePointerMove}
             onPointerUp={handlePointerUp}
             className="absolute top-0 bottom-0 z-40 flex items-center justify-center w-10 cursor-ew-resize"
-            style={{ left: useTransform(xSpring, v => `${v}%`), x: "-50%" }}
+            style={{ left: useTransform(xSpring, (v) => `${v}%`) as any, x: "-50%" }}
           >
             <div className="relative w-12 h-12 rounded-full bg-white text-black border-2 border-[#3B9ACB] shadow-2xl flex items-center justify-center">
-               <motion.div
-                className="absolute inset-0 rounded-full border-2 border-[#3B9ACB]"
-                animate={{ scale: [1, 1.4, 1], opacity: [1, 0, 1] }}
-                transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
-              />
+              <motion.div className="absolute inset-0 rounded-full border-2 border-[#3B9ACB]" animate={{ scale: [1, 1.4, 1], opacity: [1, 0, 1] }} transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }} />
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-                <path d="M9 4L4 9L9 14" stroke="#3B9ACB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M15 4L20 9L15 14" stroke="#3B9ACB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M9 4L4 9L9 14" stroke="#3B9ACB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M15 4L20 9L15 14" stroke="#3B9ACB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
           </motion.div>
@@ -689,16 +662,10 @@ function CompareModal({
         <div className="px-5 md:px-7 py-3 border-t border-[#3B9ACB26] flex flex-wrap items-center justify-between gap-3 text-[11px] md:text-xs text-black/60">
           <span>Tip: drag to bias towards one side – release to snap to 25 / 50 / 75.</span>
           <div className="flex items-center gap-2">
-            <button
-              onClick={() => x.set(50)}
-              className="rounded-full px-3 py-1.5 border border-[#3B9ACB33] bg-white text-black hover:bg-[#3B9ACB0D]"
-            >
+            <button onClick={() => x.set(50)} className="rounded-full px-3 py-1.5 border border-[#3B9ACB33] bg-white text-black hover:bg-[#3B9ACB0D]">
               Reset to middle
             </button>
-            <button
-              onClick={() => onRequestQuote?.()}
-              className="rounded-full px-4 py-1.5 bg-[#3B9ACB] text-white font-semibold hover:brightness-110"
-            >
+            <button onClick={() => onRequestQuote?.()} className="rounded-full px-4 py-1.5 bg-[#3B9ACB] text-white font-semibold hover:brightness-110">
               Request quote
             </button>
           </div>

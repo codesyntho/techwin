@@ -58,7 +58,7 @@ export const laserTestingData: CategoryData = {
     title: "Laser Testing and Measurement Systems",
     tagline:
       "Precision spectral and noise testing solutions for labs, production and R&D — verify performance before deployment.",
-    image: "/techwin-company/category/Testing Systems.jpg",
+    image: "/category/Laser-Testing-and-Measurement-Systems.jpg",
     imageAlt:
       "Laser testing and measurement system — spectral and noise analyzer units by Techwin",
     breadcrumb: [

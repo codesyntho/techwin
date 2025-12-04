@@ -123,7 +123,7 @@ export default function CategoryIntro({ intro, keyFeaturesPreview = [] }: Props)
                 Request a quote
               </a>
 
-              <a
+              {/* <a
                 href="#downloads"
                 className="
                   px-5 py-2
@@ -136,7 +136,7 @@ export default function CategoryIntro({ intro, keyFeaturesPreview = [] }: Props)
                 "
               >
                 Download brochure
-              </a>
+              </a> */}
             </div>
           </motion.div>
 

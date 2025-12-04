@@ -48,7 +48,7 @@ export const broadbandAseData: CategoryData = {
     title: "Broadband & ASE Light Sources – High-Performance Solutions",
     tagline:
       "Stable spectral output and low-noise broadband illumination for testing, sensing, imaging and photonics research.",
-    image: "/techwin-company/category/Broadband-ASE-Sources.jpg",
+    image: "/category/Broadband-ASE-Sources.jpg",
     imageAlt: "Broadband ASE light source module — Techwin",
     breadcrumb: [
       { label: "Home", href: "/" },

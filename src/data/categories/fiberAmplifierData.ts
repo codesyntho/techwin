@@ -57,7 +57,7 @@ export const fiberAmplifierData: CategoryData = {
     title: "Fiber Amplifier and Optical Amplification",
     tagline:
       "Stable, low-noise, high-efficiency fiber amplifiers engineered for scientific, industrial and communication applications.",
-    image: "/techwin-company/category/Fiber Amplifiers.jpg",
+    image: "/category/Fiber-Amplifier.jpg",
     imageAlt: "Fiber amplifier module — Techwin optical amplification system",
     breadcrumb: [
       { label: "Home", href: "/" },

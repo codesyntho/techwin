@@ -14,6 +14,7 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { useEffect, useRef, useState } from "react";
+import MobileNav from "@/components/layout/MobileNav";
 import { applications } from "@/data/Application/applications";
 import { SearchDropdown } from "@/components/common/SearchDropdown";
 import type { SearchResult } from "@/app/api/search/route";
@@ -162,14 +163,18 @@ export default function Header() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [showSearchDropdown]);
 
+  const [mobileOpen, setMobileOpen] = useState(false);
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 shadow-md">
+    <>
+      <header className="fixed top-0 left-0 right-0 z-50 shadow-md">
       {/* TOP FLOOR */}
       <div className="bg-white">
         <div className="mx-auto max-w-[1200px] px-4 py-3 flex items-center gap-4">
           <button
             className="md:hidden p-2 rounded hover:bg-gray-100"
             aria-label="menu"
+            onClick={() => setMobileOpen(true)}
           >
             <Menu className="h-5 w-5 text-[#3B9ACB]" />
           </button>
@@ -179,10 +184,9 @@ export default function Header() {
               src={safeImageSrc("/techwin-logo-rectangle.png")}
               alt="Techwin Logo"
               width={150}
-              height={50}
+              height={40}
               priority
-              style={{ width: "auto", height: "auto" }}
-              className="object-contain"
+              className="object-contain h-15 w-auto"
             />
           </Link>
 
@@ -206,7 +210,7 @@ export default function Header() {
                       searchQuery
                     )}`;
                 }}
-                className="absolute right-1 top-1/2 -translate-y-1/2 bg-[#3B9ACB] text-white px-4 py-1.5 rounded-full text-sm hover:bg-[#2D87B7]"
+                className="hidden md:inline-flex absolute right-1 top-1/2 -translate-y-1/2 bg-[#3B9ACB] text-white px-4 py-1.5 rounded-full text-sm hover:bg-[#2D87B7]"
               >
                 Search
               </button>
@@ -398,7 +402,7 @@ export default function Header() {
                           <h4 className="text-sm font-semibold mb-3 text-[#3B9ACB]">
                             Applications
                           </h4>
-                            <ul className="grid grid-cols-1 gap-2 max-h-[360px] overflow-auto pr-2">
+                          <ul className="grid grid-cols-1 gap-2 max-h-[360px] overflow-auto pr-2">
                             {applications.slice(0, 12).map((app) => (
                               <li
                                 key={app.slug}
@@ -441,11 +445,19 @@ export default function Header() {
                             <h4 className="text-sm font-semibold mb-3 text-[#3B9ACB]">
                               Featured
                             </h4>
-                            {((activeApp && activeApp.image) || activeCategory.image) ? (
+                            {(activeApp && activeApp.image) ||
+                            activeCategory.image ? (
                               <div className="relative h-36 w-full rounded overflow-hidden border border-gray-100">
                                 <Image
-                                  src={safeImageSrc((activeApp && activeApp.image) || activeCategory.image)}
-                                  alt={`Featured for ${activeApp ? activeApp.name : activeCategory.title}`}
+                                  src={safeImageSrc(
+                                    (activeApp && activeApp.image) ||
+                                      activeCategory.image
+                                  )}
+                                  alt={`Featured for ${
+                                    activeApp
+                                      ? activeApp.name
+                                      : activeCategory.title
+                                  }`}
                                   fill
                                   sizes="240px"
                                   className="object-cover"
@@ -457,8 +469,6 @@ export default function Header() {
                               </div>
                             )}
                           </div>
-
-     
                         </div>
                       </div>
                     </NavigationMenuContent>
@@ -480,6 +490,9 @@ export default function Header() {
           </div>
         </div>
       </nav>
-    </header>
+      </header>
+
+      {mobileOpen && <MobileNav onClose={() => setMobileOpen(false)} />}
+    </>
   );
 }

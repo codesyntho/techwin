@@ -58,7 +58,7 @@ export const seedFiberData: CategoryData = {
     title: "High-Precision Seed Fiber Lasers",
     tagline:
       "Stable narrow-linewidth seed lasers for amplifiers, LiDAR, communications and precision sensing.",
-    image: "/techwin-company/category/Seed Lasers.jpg",
+    image: "/category/High-Precision-Seed-Fiber-Lasers.jpg",
     imageAlt: "High-precision seed fiber laser module — Techwin",
     breadcrumb: [
       { label: "Home", href: "/" },

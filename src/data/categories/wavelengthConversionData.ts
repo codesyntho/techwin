@@ -62,7 +62,7 @@ export const wavelengthConversionData: CategoryData = {
     title: "Wavelength Conversion Laser Solutions – High-Precision Performance",
     tagline:
       "Reliable wavelength conversion systems (UV / Visible / IR) for spectroscopy, lithography, imaging and precision research.",
-    image: "/techwin-company/category/Wavelength Conversion Lasers.jpg",
+    image: "/category/Wavelength-Conversion-Laser-Solutions-High-Precision-Performance.jpg",
     imageAlt: "Wavelength conversion laser system producing UV and visible output — Techwin",
     breadcrumb: [
       { label: "Home", href: "/" },

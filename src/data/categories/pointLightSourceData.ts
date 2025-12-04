@@ -62,7 +62,7 @@ export const pointLightSourceData: CategoryData = {
     title: "Point Light Source Solutions – High-Stability Light Source",
     tagline:
       "Stable broadband illumination and low-coherence modules for OCT, sensing and precision photonics.",
-    image: "/techwin-company/category/SLED Light Sources.jpg",
+    image: "/category/Point-Light-Source-Solutions.jpg",
     imageAlt: "Point light source module — Techwin",
     breadcrumb: [
       { label: "Home", href: "/" },

@@ -59,7 +59,7 @@ export const sledLightData: CategoryData = {
     title: "Super Luminescent LED (SLED) Solutions – High-Stability SLED Light Source",
     tagline:
       "Stable broadband illumination and low-coherence SLED modules for OCT, sensing and precision photonics.",
-    image: "/techwin-company/category/SLED Light Sources.jpg",
+    image: "/category/Point-Light-Source-Solutions.jpg",
     imageAlt: "Super luminescent LED (SLED) light source module — Techwin",
     breadcrumb: [
       { label: "Home", href: "/" },

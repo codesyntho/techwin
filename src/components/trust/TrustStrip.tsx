@@ -3,6 +3,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { useRequestQuote } from "@/context/RequestQuoteContext";
 
 export default function TrustStrip(props: {
   bullets?: string[];
@@ -37,6 +38,7 @@ export default function TrustStrip(props: {
   const rootRef = useRef<HTMLElement | null>(null);
   const trackRef = useRef<HTMLDivElement | null>(null);
   const [isPaused, setIsPaused] = useState(false);
+  const { openModal } = useRequestQuote();
 
   // animate numeric counters when visible
   useEffect(() => {
@@ -113,12 +115,13 @@ export default function TrustStrip(props: {
               ))}
             </div>
             <div className="mt-6">
-              <a
-                href={cta.href}
+              <button
+                type="button"
+                onClick={() => openModal()}
                 className="inline-block rounded-full bg-white text-[#3087C0] px-6 py-2.5 font-semibold shadow-md hover:shadow-lg transition-transform hover:-translate-y-0.5"
               >
                 {cta.label}
-              </a>
+              </button>
             </div>
           </div>
 

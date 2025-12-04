@@ -15,6 +15,7 @@ import { fiberAmplifierData } from "@/data/categories/fiberAmplifierData";
 import { laserTestingData } from "@/data/categories/laserTestingData";
 import { pointLightSourceData } from "@/data/categories/pointLightSourceData";
 import { sledLightData } from "@/data/categories/sledLightData";
+import { PRODUCT_MAP } from "@/data/products";
 
 export type ProductCard = {
   id: string;
@@ -29,6 +30,8 @@ type Props = {
   heading?: string;
   subheading?: string;
   showSeeAllButton?: boolean;
+  // Optional: when provided, show products from this category (category folder slug)
+  category?: string;
 };
 
 // Build products list from category data so URLs and content remain canonical
@@ -114,10 +117,11 @@ function Card({ product, href }: { product: ProductCard; href: string }) {
 }
 
 export default function ProductFamilies({
-  products = EXAMPLE_PRODUCTS,
+  products,
   heading = "Product Families",
   subheading = "Explore our complete range of high-performance laser systems and optical sources.",
   showSeeAllButton = true,
+  category,
 }: Props) {
   // Grid appearance settings — change gridSize to adjust cell size
   const gridSize = 48; // px (cell size)
@@ -137,6 +141,42 @@ export default function ProductFamilies({
     backgroundRepeat: "repeat",
   };
 
+  // If a category slug is provided and no explicit `products` were passed,
+  // build a products list from the product catalogue that belong to the same
+  // category. This makes the component usable on product pages to show
+  // "more products" from the same category.
+  const buildFromCategory = (cat?: string): ProductCard[] => {
+    if (!cat) return [];
+    try {
+      const all = Object.values(PRODUCT_MAP) as any[];
+      const filtered = all.filter((p) => {
+        if (!p) return false;
+        // Prefer explicit `category` field on product entries
+        if (p.category && typeof p.category === "string") return p.category === cat;
+        // Fallback: try to infer from hero/preview image path
+        const src = (p.previewImageSrc || (p.heroImage && (typeof p.heroImage === "string" ? p.heroImage : p.heroImage.src)) || "") as string;
+        return src.includes(`/${cat.replace(/^\//, "")}`) || src.includes(`/products/${cat}`) || src.includes(`/${cat.replace(/-/g, " ")}`);
+      });
+
+      return filtered.map((p) => {
+        const img = (p.previewImageSrc || (p.heroImage && (typeof p.heroImage === "string" ? p.heroImage : p.heroImage.src)) || undefined) as string | undefined;
+        const slug = p.slug || (p.meta && p.meta.title && p.meta.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")) || String(Math.random());
+        return {
+          id: slug,
+          title: p.title || (p.meta && p.meta.title) || "Product",
+          short: p.shortDescription || (p.meta && p.meta.description) || "",
+          img: img || undefined,
+          href: `/products/${cat}/${slug}`,
+        } as ProductCard;
+      });
+    } catch (err) {
+      return [];
+    }
+  };
+
+  const categoryProducts = (!products || products.length === 0) && category ? buildFromCategory(category) : [];
+  const displayProducts = products && products.length > 0 ? products : categoryProducts.length > 0 ? categoryProducts : EXAMPLE_PRODUCTS;
+
   return (
     <section className="relative py-16 text-white" style={gridStyle}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -148,7 +188,7 @@ export default function ProductFamilies({
 
         {/* product grid - subtle separators (card borders) + spacing so grid shows through */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.map((p) => (
+          {displayProducts.map((p) => (
             <Card key={p.id} product={p} href={p.href || "/products"} />
           ))}
         </div>

@@ -30,6 +30,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-, "src/data/categories/singleFrequencyData.ts"  ],
+, "src/data/categories/singleFrequencyData.ts", "src/components/products/ProductGraphsAndTableSection.tsx"  ],
   "exclude": ["node_modules"]
 }
